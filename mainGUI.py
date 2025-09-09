@@ -5,7 +5,7 @@ import conversor
 
 frame_layout = [
     [psg.Radio('Celsius -> Fahrenheit', 'GRUPO2', default=True, key='cel_fah', enable_events=True)], # Erro3
-    [psg.Radio('Fahrenheit -> Celsius', 'GRUPO1', key='cel_fah', enable_events=True)] # Erro4
+    [psg.Radio('Fahrenheit -> Celsius', 'GRUPO1', key='fah_cel', enable_events=True)] # Erro4
 ]
 layout = [
     [psg.Text('Informe a temperatura em ºC: ', key='rotulo'), psg.InputText(key='temp'), psg.Frame('Opções: ', layout=frame_layout)],
@@ -14,7 +14,7 @@ layout = [
 ]
 
 janela = psg.Window('Conversor', layout)
-
+'   '
 while True:
     evento, valor = janela.read()
 
