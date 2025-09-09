@@ -1,6 +1,7 @@
 # Interface simples
 
 from conversor import cel_fah
+from conversor import fah_cel
 
 while True:
     # Apresentação
@@ -8,7 +9,8 @@ while True:
 
     # Menu
     print('1. Converter ºC em ºF')
-    print('2. Sair')
+    print('2. Converter ºF em ºC')
+    print('3. Sair')
 
     # Ler a opção do usuário
     op = int(input('\nInforme a opção: '))
@@ -23,7 +25,15 @@ while True:
         # Saída
         print('\n{:.2f}ºC = {:.2f}ºF\n'.format(cel, fah))
     elif op == 2:
-        print('\nForte abraço!\n')
+        fah = float(input('Informe a temperatura em Fº:'))
+         
+        #Processamento
+        cel = fah_cel(fah)
+
+        #Saida 
+        print('\n{:.2f}ºF = {:.2f}ºC\n'.format(fah, cel))
+    elif op == 3:
+        print('Forte abraço!')
         break
     else:
-        print(f'Opção {op} incorreta!')
+        print('Opcão inavalida! Tente novamente.')

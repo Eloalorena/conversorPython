@@ -21,23 +21,26 @@ while True:
     if evento == psg.WIN_CLOSED or evento == 'Exit':
         break
     
-    elif evento == 'cel_fah':
+    elif valor.get('cel_fah' , False): # Atualiza o rotulo
         janela['rotulo'].update('Informe a temperatura em ºC: ')
     
-    elif evento == 'fah_cel':
+    elif valor.get ('fah_cel', False):
         janela['rotulo'].update('Informe a temperatura em ºF: ')
 
     elif evento == 'Limpar':
         janela['temp'].update('')
-        # Erro5
-        janela['temp'].set_focus()
-    else:
-        if valor['cel_fah']:
-            fah = conversor.cel_fah(float(valor['temp']))
-            # Erro6
-        else:
-            # Erro7
-            janela['resultado'].update('{:.2f} ºC'.format(cel))
-
-        
+        janela['temp'].set_focus() 
+        janela['resultado'].update('')
+    elif evento == 'Converter':
+        try:
+            temp = float(valor['temp'])
+            if valor['cel_fah']:
+                fah = conversor.cel_fah(temp)
+                janela['resultado'].update('{:.2f} ºF'.format(fah))
+            else:
+                cel = conversor.fah_cel(temp)
+                janela['resultado'].update('{:.2f} ºC'.format(cel))
+        except Exception as e:
+            janela['resultado'].update('Valor inválido!')
+            
 janela.close()
